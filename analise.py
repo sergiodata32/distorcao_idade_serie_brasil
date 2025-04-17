@@ -3,6 +3,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+
+# Criar pasta de gráficos se não existir
+os.makedirs("graficos", exist_ok=True)
 
 # Leitura do arquivo CSV com caminho absoluto (VS Code)
 caminho_arquivo = r"C:\Users\T-GAMER\Desktop\distorcao-idade-serie-2020-Brasil.csv"
@@ -16,30 +20,33 @@ cols_numericas = [
     "1ª Série EM", "2ª Série EM", "3ª Série EM", "4ª Série EM"
 ]
 for col in cols_numericas:
-    df[col] = df[col].replace("--", np.nan)             # substitui "--" por NaN
-    df[col] = df[col].str.replace(",", ".")            # troca vírgula por ponto
-    df[col] = df[col].astype(float)                      # converte para float
+    df[col] = df[col].replace("--", np.nan)
+    df[col] = df[col].str.replace(",", ".")
+    df[col] = df[col].astype(float)
 
 # 1. Média da distorção por região (Anos Iniciais)
 media_regiao = df.groupby("Região")["Anos Iniciais"].mean().sort_values()
 media_regiao.plot(kind="barh", title="Média de Distorção - Anos Iniciais por Região")
 plt.xlabel("% de Distorção")
 plt.tight_layout()
-plt.show()
+plt.savefig("graficos/media_regiao.png")
+plt.close()
 
 # 2. Comparativo Urbana x Rural - Anos Iniciais
 df_local = df.groupby("Localização")["Anos Iniciais"].mean().sort_values()
 df_local.plot(kind="bar", title="Distorção - Localização Urbana x Rural")
 plt.ylabel("% de Distorção")
 plt.tight_layout()
-plt.show()
+plt.savefig("graficos/localizacao_anos_iniciais.png")
+plt.close()
 
 # 3. Maiores valores por série do Ensino Médio
 max_por_em = df[["1ª Série EM", "2ª Série EM", "3ª Série EM", "4ª Série EM"]].max()
 max_por_em.plot(kind="bar", title="Maior Distorção por Série do Ensino Médio")
 plt.ylabel("% de Distorção")
 plt.tight_layout()
-plt.show()
+plt.savefig("graficos/maior_distorcao_em.png")
+plt.close()
 
 # 4. Linha com maior distorção no 6º ano
 maior_6ano = df[df["6º ano"] == df["6º ano"].max()]

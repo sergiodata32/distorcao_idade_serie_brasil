@@ -17,3 +17,16 @@ Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira | Inep
 
 - Análise por região
 - Levantamento de dados e geração de insgths para possíveis politicas públicas referente a Educação.
+
+# Análises Gráficas
+
+
+## Média por Região
+
+![Média por Região](graficos/media_regiao.png)
+
+## Localização Urbana x Rural
+![Localização](graficos/localizacao_anos_iniciais.png)
+
+## Distorção idade-série no Ensino Médio
+![Ensino Médio](graficos/maior_distorcao_em.png)
