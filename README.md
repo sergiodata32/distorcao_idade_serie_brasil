@@ -1,7 +1,7 @@
 # Distorção idade-série na Educação Brasileira
 
 
-## Análise de dados com base nas taxas de distorção idade-série dos anos de 2020 a 2024:
+## Análise de dados com base nas taxas de distorção idade-série do ano de 2020:
 
 
 **Áreas de ensino analisadas**
